@@ -13,109 +13,109 @@ function swapMain(main){
 // 
 	$("."+main).removeClass("is-hidden");
 }
-// $(document).ready(function(){
-//     swapMain("formsanpham");//mặc địch khi load trang chủ lên
-//     $(".menusanpham").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Sản phẩm</li>')
-//         swapMain("formsanpham");
+$(document).ready(function(){
+    swapMain("formsanpham");//mặc địch khi load trang chủ lên
+    $(".menusanpham").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Sản phẩm</li>')
+        swapMain("formsanpham");
         
-//     });
-//     $(".menukhachhang").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Khách hàng</li>');
-//         swapMain("formkhachhang");
+    });
+    $(".menukhachhang").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Khách hàng</li>');
+        swapMain("formkhachhang");
        
-//     });
-//     $(".menunhanvien").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Nhân viên</li>');
-//         swapMain("formnhanvien");
-//     });
-//     $(".menunhacungcap").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Nhà cung cấp</li>');
-//         swapMain("formnhacungcap");
-//     });
-//     $(".menusp-ncc").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Sản phẩm_Nhà cung cấp</li>');
-//         swapMain("formsp-ncc");
-//         showDataCBMaSP();
-//         showDataCBMaNCC();
-//     });
-//     $(".menuhoadon").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Hóa đơn</li>');
-//         swapMain("formhoadon");
-//     });
-//     $(".menudondathang").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Đơn đặt hàng</li>');
-//         swapMain("formdondathang");
-//     });
-//     $(".menucthoadon").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Chi tiết hóa đơn</li>');
-//         swapMain("formcthoadon");
-//     });
-//     $(".menuctdondathang").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Chi tiết đặt hàng</li>');
-//         swapMain("formctdondathang");
-//     });
-//     $(".menugiamgia").on("click", function(){
-//         $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Giam giá</li>');
-//         swapMain("formgiamgia");
-//     });
-//     showdataSP();
-//     showdataKH();
-//     showdataNV();
-//     showdataNCC();
-//     showdataSPNCC();
-//     showdataHD();
-//     showdataDDH();
-//     showdataCTHD();
-//     showdataCTDDH();
-//     showdataGG();
-//     buildUserDropdown();
-//     permission1();
-// //logout
-//     $(".addusername").on("click", ".btn_log_out", function(){
-//         console.log("logout");
-//         logout();
-//     })
-// //change mat khau
-//     $(".btn_change_matkhau").click(function() {	
-// 		$('.showmodalchangematkhau').modal('show');	
-// 	});
-// 	$(".btn_change_pass").click(function() {
-// 	//var txtpassold=$('.txtpassold').val();
-// 	var txtpassnew=$('.txtpassnew').val();
-// 	var txtpassnewagain=$('.txtpassnewagain').val();
-// 	if(txtpassnew==""||txtpassnewagain=="")
-// 	{
-// 		alert("Mật khẩu không được trống");
-// 	}
-// 	else if(txtpassnew!=txtpassnewagain){
-// 		alert("Mật khẩu cũ và mới không khớp");
-// 	}else{
-// 		 var dataSend={
-// 		event:"updatepass",
-// 		pass:txtpassnew,
+    });
+    $(".menunhanvien").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Nhân viên</li>');
+        swapMain("formnhanvien");
+    });
+    $(".menunhacungcap").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Nhà cung cấp</li>');
+        swapMain("formnhacungcap");
+    });
+    $(".menusp-ncc").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Sản phẩm_Nhà cung cấp</li>');
+        swapMain("formsp-ncc");
+        showDataCBMaSP();
+        showDataCBMaNCC();
+    });
+    $(".menuhoadon").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Hóa đơn</li>');
+        swapMain("formhoadon");
+    });
+    $(".menudondathang").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Đơn đặt hàng</li>');
+        swapMain("formdondathang");
+    });
+    $(".menucthoadon").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Chi tiết hóa đơn</li>');
+        swapMain("formcthoadon");
+    });
+    $(".menuctdondathang").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Chi tiết đặt hàng</li>');
+        swapMain("formctdondathang");
+    });
+    $(".menugiamgia").on("click", function(){
+        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Giam giá</li>');
+        swapMain("formgiamgia");
+    });
+    showdataSP();
+    showdataKH();
+    showdataNV();
+    showdataNCC();
+    showdataSPNCC();
+    showdataHD();
+    showdataDDH();
+    showdataCTHD();
+    showdataCTDDH();
+    showdataGG();
+    buildUserDropdown();
+    permission1();
+//logout
+    $(".addusername").on("click", ".btn_log_out", function(){
+        console.log("logout");
+        logout();
+    })
+//change mat khau
+    $(".btn_change_matkhau").click(function() {	
+		$('.showmodalchangematkhau').modal('show');	
+	});
+	$(".btn_change_pass").click(function() {
+	//var txtpassold=$('.txtpassold').val();
+	var txtpassnew=$('.txtpassnew').val();
+	var txtpassnewagain=$('.txtpassnewagain').val();
+	if(txtpassnew==""||txtpassnewagain=="")
+	{
+		alert("Mật khẩu không được trống");
+	}
+	else if(txtpassnew!=txtpassnewagain){
+		alert("Mật khẩu cũ và mới không khớp");
+	}else{
+		 var dataSend={
+		event:"updatepass",
+		pass:txtpassnew,
 		
-// 		username:localStorage.getItem("usernamebookstore")
-// 		}
-// 			console.log(dataSend);
-// 		$(".progesschangepass").html("<img src='images/loading.gif' width='5px' height='5px'/>");
+		username:localStorage.getItem("usernamebookstore")
+		}
+			console.log(dataSend);
+		$(".progesschangepass").html("<img src='images/loading.gif' width='5px' height='5px'/>");
   
-//         queryDataGet("content.php",dataSend,function (res) {
-// 				console.log(res);
-// 				if(res["updatepass"]==1){
+        queryDataGet("content.php",dataSend,function (res) {
+				console.log(res);
+				if(res["updatepass"]==1){
 					
-// 					alert("Thay đổi mật khẩu thành công");
-// 					$('.showmodalchangematkhau').modal('hide');
-// 				}else
-// 				{
-// 					alert("Thay đổi mật khẩu thất bại");
-// 				}
+					alert("Thay đổi mật khẩu thành công");
+					$('.showmodalchangematkhau').modal('hide');
+				}else
+				{
+					alert("Thay đổi mật khẩu thất bại");
+				}
 					
-//           $(".progesschangepass").html("");
-// 			})
-// 	}
-// });
-// })
+          $(".progesschangepass").html("");
+			})
+	}
+});
+})
 function alert_error(mes) {
     bootbox.alert({
         size: "small",
