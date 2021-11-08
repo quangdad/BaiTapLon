@@ -107,8 +107,8 @@ $(".deletedh").on("click", function () {
 //xem tt DDH
 $(".loaddataDDH").on('click','.click_view_DDH', function(){
     var sodh_dh=  $(this).parent().attr("data-sodh_dh");
-    var makh_dh=  $(this).parent().attr("data-makh_dh");
-    var manv_dh=  $(this).parent().attr("data-manv_dh");
+    var makh_dh=  $(this).parent().attr("data-makh_kh");
+    var manv_dh=  $(this).parent().attr("data-manv_nv");
     var ngaydh_dh=  $(this).parent().attr("data-ngaydh_dh");
     var trangthai_dh=  $(this).parent().attr("data-trangthai_dh");
     var ngaydukien_dh=  $(this).parent().attr("data-ngaydukien_dh");
@@ -123,10 +123,20 @@ $(".loaddataDDH").on('click','.click_view_DDH', function(){
     $(".ngaythucte_dh").val(ngaythucte_dh);
    
 })
+$('.btnfindddh').click(function(){
+    showdataDDH();
+})
+$('.txtfindddh').keypress(function(e){
+    if(e.which==13){
+        showdataDDH();
+    }
+})
 })
 //show data đơn dặt hàng
 function showdataDDH(){
+    var find =  $(".txtfindddh").val();
     var dataclient={
+        search : find,
         event:"getdataDDH",
     } 
     queryDataGet("content.php",dataclient,function(res){
@@ -136,11 +146,11 @@ function showdataDDH(){
        let stt =1;
        for(var x in data){    
         var list=data[x];
-        htmls=htmls+'<tr data-sodh_dh="'+list.sodh_dh+'" data-makh_dh="'+list.makh_dh+'" data-manv_dh="'+list.manv_dh+'" data-ngaydh_dh="'+list.ngaydh_dh+'"data-trangthai_dh="'+list.trangthai_dh+'" data-ngaydukien_dh="'+list.ngaydukien_dh+'" data-ngaythucte_dh="'+list.ngaythucte_dh+'" >'+
+        htmls=htmls+'<tr data-sodh_dh="'+list.sodh_dh+'" data-makh_dh="'+list.makh_dh+'" data-manv_dh="'+list.manv_dh+'" data-ngaydh_dh="'+list.ngaydh_dh+'"data-trangthai_dh="'+list.trangthai_dh+'" data-ngaydukien_dh="'+list.ngaydukien_dh+'" data-ngaythucte_dh="'+list.ngaythucte_dh+'" data-manv_nv="'+list.manv_nv+'" data-tennv_nv="'+list.tennv_nv+'" data-makh_kh="'+list.makh_kh+'" data-tenkh_kh="'+list.tenkh_kh+'">'+
                 '<td>'+stt+'</td>'+
                 "<td>"+list.sodh_dh+"</td>"+
-                "<td >"+list.makh_dh+"</td>"+
-                "<td >"+list.manv_dh+"</td>"+
+                "<td >"+list.tenkh_kh+"</td>"+
+                "<td >"+list.tennv_nv+"</td>"+
                 "<td >"+list.ngaydh_dh+"</td>"+
                 "<td >"+list.trangthai_dh+"</td>"+
                 "<td >"+list.ngaydukien_dh+"</td>"+
@@ -156,4 +166,44 @@ function showdataDDH(){
        $(".loaddataDDH").html(htmls);
 
    });
+}
+function showDataCBMKH(){
+    var find =  $(".txtfindddh").val();
+    var dataclient = {
+        search : find,
+        event:"getdataKH",
+    }
+    queryDataGet("content.php",dataclient,function(res){
+        var htmls ='<option values="">Chọn tên khách hàng</option>';
+        if(res.items.length == 0){
+            htmls ='<option values="">Chọn tên khách hàng</option>'
+        }else{
+            var list =res.items;
+            for(var x in list){
+                var d = list[x];
+                htmls = htmls+'<option values="'+d.tenkh_kh+'">'+d.makh_kh+'</option>'
+            }
+            $('.makh_dh').html(htmls);
+        }
+    })
+}
+function showDataCBMNV(){
+    var find =  $(".txtfindddh").val();
+    var dataclient = {
+        search : find,
+        event:"getdataNV",
+    }
+    queryDataGet("content.php",dataclient,function(res){
+        var htmls ='<option values="">Chọn tên nhân viên</option>';
+        if(res.items.length == 0){
+            htmls ='<option values="">Chọn tên nhân viên</option>'
+        }else{
+            var list =res.items;
+            for(var x in list){
+                var d = list[x];
+                htmls = htmls+'<option values="'+d.tennv_nv+'">'+d.manv_nv+'</option>'
+            }
+            $('.manv_dh').html(htmls);
+        }
+    })
 }

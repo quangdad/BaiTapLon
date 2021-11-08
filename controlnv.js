@@ -104,10 +104,21 @@ $('.resetnv').on('click', function(){
     $(".sdt_nv").val("");
     $(".email_nv").val("");
 })
+//nút find
+$('.btnfindnv').click(function(){
+    showdataNV();
+})
+$('.txtfindnv').keypress(function(e){
+    if(e.which==13){
+        showdataNV();
+    }
+})
 })
 //show data nhân viên
 function showdataNV(){
+    var find = $('.txtfindnv').val();
     var dataclient={
+        search:find,
         event:"getdataNV",
     } 
     queryDataGet("content.php",dataclient,function(res){

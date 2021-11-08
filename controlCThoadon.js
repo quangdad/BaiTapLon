@@ -100,10 +100,22 @@ $('.resetcthd').on('click', function(){
     $(".giaban_cthd").val("" );   
     $(".giamgia_cthd").val("" );  
 })
+
+//nút find
+$('.btnfindcthd').click(function(){
+    showdataCTHD();
+})
+$('.txtfindcthd').keypress(function(e){
+    if(e.which==13){
+        showdataCTHD();
+    }
+})
 })
 //show data ct hóa đơn
 function showdataCTHD(){
+    var find=$('.txtfindcthd').val();
     var dataclient={
+        search:find,
         event:"getdataCTHD",
     } 
     queryDataGet("content.php",dataclient,function(res){

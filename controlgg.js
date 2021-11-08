@@ -89,17 +89,29 @@ $('.resetgg').on('click', function(){
     $(".tengg_gg").val("");
     $(".gg_gg").val("");
 })
+$('.btnfindgg').click(function(){
+    showdataGG();
+})
+$('.txtfindgg').keypress(function(e){
+    if(e.which==13){
+        showdataGG();
+    }
+})
 });
 
 
 //show data giảm giá
 function showdataGG(){
+    var find=$('.txtfindgg').val();
     var dataclient={
+        search:find,
         event:"getdataGG",
+
     } 
     queryDataGet("content.php",dataclient,function(res){
        console.log(res);
        var data=res.items; 
+       console.log(data);
        var htmls='';
        let stt =1;
        for(var x in data){    

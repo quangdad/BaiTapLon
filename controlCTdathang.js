@@ -103,17 +103,26 @@ $('.resetctdh').on('click', function(){
     $(".giatien_ctdh").val("");   
     $(".mgg_ctdh").val(""); 
 })
+$('.btnfindctdh').click(function(){
+    showdataCTDDH();
+})
+$('.txtfindctdh').keypress(function(e){
+    if(e.which==13){
+        showdataCTDDH();
+    }
+})
 })
 //show data ct đơn đặt hàng
 function showdataCTDDH(){
+    var find=$('.txtfindctdh').val();
     var dataclient={
+        search:find,
         event:"getdataCTDDH",
     } 
     
     queryDataGet("content.php",dataclient,function(res){
         showdataTK_CTDDH();
-       var data=res.items; 
-       console.log(data);
+       var data=res.items;  
        var htmls='';
        let stt=1;
        for(var x in data){    
@@ -132,14 +141,15 @@ function showdataCTDDH(){
                 
                 
        }
-       console.log(htmls);
        $(".loaddataCTDDH").html(htmls);
 
    });
 }
 //hàm show cb mã gg
 function showDataCBMagg(){
+    var find=$('.txtfindgg').val();
     var dataclient = {
+        search:find,
         event:"getdataGG",
     }
     queryDataGet("content.php",dataclient,function(res){
@@ -158,7 +168,9 @@ function showDataCBMagg(){
 }
 //hàm show cb mã giá tiền
 function showDataCBGiaTien(){
+    var find=$('.txtfindctdh').val();
     var dataclient = {
+        search:find,
         event:"getdataSP",
     }
     queryDataGet("content.php",dataclient,function(res){
@@ -176,7 +188,9 @@ function showDataCBGiaTien(){
     })
 }
 function showDataCBDDH(){
+    var find=$('.txtfindctdh').val();
     var dataclient = {
+        search:find,
         event:"getdataDDH",
     }
     queryDataGet("content.php",dataclient,function(res){
@@ -194,7 +208,9 @@ function showDataCBDDH(){
     })
 }
 function showDataCBMSP(){
+    var find=$('.txtfindctdh').val();
     var dataclient = {
+        search:find,
         event:"getdataSP",
     }
     queryDataGet("content.php",dataclient,function(res){

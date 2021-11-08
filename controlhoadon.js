@@ -88,10 +88,21 @@ $(".loaddataHD").on('click','.click_view_HD', function(){
     $(".manv_hd").val(manv_hd);
     $(".ngayhd_hd").val(ngayhd_hd );   
 })
+// nút find 
+$('.btnfindhd').click(function(){
+    showdataHD();
+})
+$('.txtfindhd').keypress(function(e){
+    if(e.which==13){
+        showdataHD();
+    }
+})
 })
 //show data hóa đơn
 function showdataHD(){
+    var find = $('.txtfindhd').val();
     var dataclient={
+        search : find,
         event:"getdataHD",
     } 
     queryDataGet("content.php",dataclient,function(res){

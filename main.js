@@ -69,6 +69,8 @@ $(document).ready(function(){
         $(".titlestatus2").text("/"+menudondathang2);
         $(".titlestatus").text(menudondathang);
         swapMain("formdondathang");
+        showDataCBMKH();
+        showDataCBMNV();
     });
     $(".menucthoadon").on("click", function(){
         let menucthoadon2=$('.nav-treeview .menucthoadon').text();
@@ -248,11 +250,11 @@ function buildUserDropdown(){
 	
 	if(myUser==undefined || myUser==null||myUser==""){
 		
-	//    location.href="login.html";
+	   location.href="login.html";
 	}
 	else{
 			
-		$(".addusername").html("<div style='text-align=center;' class ='submenuacc'>"+myUser.items[0].fullname+'<br><div class ="menuacc" ><li><a href="#" class="btn_change_matkhau"><i class="fas fa-key"></i>&#160;Đổi mật khẩu</a></li> <li><a href="#" class="btn_log_out"><i class="fas fa-sign-out-alt"></i>&#160;Đăng xuất </a></li></div></div>');
+		$(".addusername").html("<div class ='submenuacc'>"+myUser.items[0].fullname+'<br><div class ="menuacc" ><li><a href="#" class="btn_change_matkhau">Đổi mật khẩu<i class="fas fa-lock"></i></a></li> <li><a href="#" class="btn_log_out">Đăng xuất<i class="fas fa-sign-out-alt"></i> </a></li></div></div>');
 		
 		if(avatar=="" || avatar==undefined||avatar=="null"){
 			$(".addvartar").attr("src","images/avatar.png");
@@ -298,32 +300,6 @@ function notext(){
     $('.notext').prop("disabled", true);
 }
 
-function buildSlidePage(obj,codan,pageActive,totalPage) {
-    var html="";
-    pageActive=parseInt(pageActive);
-    for(i = 1 ; i <=codan; i++) {
-        if(pageActive-i<0) break;
-        html='<button type="button" class="btn btn-outline btn-default" value="'+(pageActive-i)+'">'+(pageActive-i+1)+'</button>'+html;
-    }
-    if(pageActive>codan){
-        html='<button type="button" class="btn btn-outline btn-default" value="'+(pageActive-i)+'">...</button>'+html;
-    }
-    html+='<button type="button" class="btn btn-outline btn-default" style="background-color: #5cb85c" value="'+pageActive+'">'+(pageActive+1)+'</button>';
-    for(i = 1 ; i <=codan; i++){
-        if(pageActive+i>=totalPage) break;
-        html=html+'<button  type="button" class="btn btn-outline btn-default" value="'+(pageActive+i)+'">'+(pageActive+i+1)+'</button>';
-    }
-    if(totalPage-pageActive>codan+1){
-        html=html+'<button type="button" value="'+(pageActive+i)+'" class="btn btn-outline btn-default">...</button>';
-    }
-    obj.html(html);
-}
-function printSTT(record,pageCurr){
-    if ((pageCurr+1)==1) {
-        return 1;
-    }else{
-        return record*(pageCurr+1)-(record-1);
-    }
-}
+
 
 

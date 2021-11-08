@@ -111,10 +111,21 @@ $('.resetkh').on('click', function(){
     $(".diachi_kh").val("");
    
 })
+//nút find
+$('.btnfindkh').click(function(){
+    showdataKH();
+})
+$('.txtfindkh').keypress(function(e){
+    if(e.which==13){
+        showdataKH();
+    }
+})
 })
 //show data KH--------------------------------------------------------------------------
 function showdataKH(){
+    var find = $('.txtfindkh').val();
     var dataclient={
+        search: find,
         event:"getdataKH",
     } 
     queryDataGet("content.php",dataclient,function(res){

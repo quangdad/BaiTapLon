@@ -1,15 +1,13 @@
 .menuacc{
-    position: absolute;
+    position: fixed;
     list-style: none;
-    display: hidden;
     border: 1px solid #ccc;
     visibility: hidden;
     background-color:snow;
-    color: black;
     padding: 0 ;
     border-radius: 3%;
     transition: 0,05s;
-    /* display: block; */
+    width: 145px;
 }
 /* div.info{
     width: 90px;
@@ -18,10 +16,22 @@
 .submenuacc a.btn_change_matkhau{
     color: rgba(0, 0, 0, 0.815);
     font-weight: 500;
+    font-size: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.submenuacc a.btn_change_matkhau i{
+    float: right;
+    padding: 5px 0 0 0;
 }
 .submenuacc a.btn_log_out{
     color: rgba(0, 0, 0, 0.774);
     font-weight: 500;
+    font-size: 15px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.submenuacc a.btn_log_out i{
+    float: right;
+    padding: 5px 0 0 0;
 }
 .addusername div.submenuacc{
     width: fit-content;
@@ -36,10 +46,11 @@
     color: black;
 }
 .menuacc:hover a.btn_log_out{
-    color: black;
+    color: black; 
 }
 .menuacc li:hover{
     background-color: rgb(233, 241, 243);
+    border-bottom: 1px solid rgba(15, 1, 1, 0.1);
 }
 .menuacc li{
     padding: 0 12px;
@@ -49,11 +60,44 @@
     padding: 50 0px;
     width: 100%;
     height: 65px;
-    position: fixed;
     top: 50;
     left: 50;
     z-index: 1;
 }
 button.btn_thongke{
     margin-top: 32px;
+}
+.card-header {
+    background-color: #F1D8E5;
+}
+.card-header input .form-control{
+    border-radius: 20%;
+}
+.main-sidebar{
+    background: linear-gradient(180deg, #c72243 0%, #445cd6 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.10);
+}
+.main-sidebar a.nav-link{
+    color: #fff;
+    font-weight: 400px;
+    cursor: pointer;
+}
+.main-sidebar .addusername{
+    color: #fff;
+    font: weight 350px;;
+    cursor: pointer;
+}
+.main-sidebar .brand-link{
+    color: #fff;
+    font: weight 350px;;
+    cursor: pointer;
+}
+.main-sidebar .nav-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.main-sidebar .brand-link {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+.main-sidebar .user-panel{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
 }

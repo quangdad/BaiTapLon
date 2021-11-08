@@ -77,9 +77,8 @@ switch ($event) {
         case "getdataSP": 
 		
         $mang=array();
-       
-        
-        $sql=mysqli_query($conn,"SELECT * from sanpham"); 
+        $search=$_GET['search']; //Tìm kiếm dữ liệu
+        $sql=mysqli_query($conn,"SELECT * from sanpham where (matl_sp like '%".$search."%' or tentl_sp like '%".$search."%' or hsp_sp like '%".$search."%' ) order by matl_sp"); 
         while($rows=mysqli_fetch_array($sql))
         {
            
@@ -153,9 +152,8 @@ $sql="UPDATE khachhang SET tenkh_kh='$tenkh_kh', sdt_kh='$sdt_kh', email_kh='$em
 case "getdataKH":
 		
         $mang=array();
-       
-        
-        $sql=mysqli_query($conn,"select * from khachhang"); 
+        $search=$_GET['search']; //Tìm kiếm dữ liệu
+        $sql=mysqli_query($conn,"select * from khachhang where (makh_kh like '%".$search."%' or tenkh_kh like '%".$search."%' or sdt_kh like '%".$search."%' or email_kh like '%".$search."%') order by makh_kh"); 
         while($rows=mysqli_fetch_array($sql))
         {
            
@@ -229,9 +227,8 @@ case "deleteNV":
 case "getdataNV":
     
     $mang=array();
-   
-    
-    $sql=mysqli_query($conn,"select * from nhanvien"); 
+    $search=$_GET['search']; //Tìm kiếm dữ liệu
+    $sql=mysqli_query($conn,"SELECT * from nhanvien where (manv_nv like '%".$search."%' or tennv_nv like '%".$search."%' or sdt_nv like '%".$search."%' or email_nv like '%".$search."%') order by manv_nv"); 
     while($rows=mysqli_fetch_array($sql))
     {
         $usertemp['manv_nv']=$rows['manv_nv'];
@@ -305,9 +302,8 @@ case "deleteNCC":
 case "getdataNCC":
     
     $mang=array();
-   
-    
-    $sql=mysqli_query($conn,"select * from nhacungcap"); 
+    $search=$_GET['search']; //Tìm kiếm dữ liệu
+    $sql=mysqli_query($conn,"SELECT * from nhacungcap where (ma_ncc like '%".$search."%' or ten_ncc like '%".$search."%' or sdt_ncc like '%".$search."%' ) order by ma_ncc"); 
     while($rows=mysqli_fetch_array($sql))
     {
        
@@ -367,10 +363,9 @@ case "deleteSPNCC":
     break;
 
 case "getdataSPNCC":
-    
     $mang=array();
-    
-    $sql=mysqli_query($conn,"SELECT * from sanpham_nhacungcap ORDER BY mancc_spncc asc"); 
+    $search=$_GET['search']; //Tìm kiếm dữ liệu
+    $sql=mysqli_query($conn,"SELECT * from sanpham_nhacungcap where (mancc_spncc like '%".$search."%' or masp_spncc like '%".$search."%') order by mancc_spncc asc"); 
     while($rows=mysqli_fetch_array($sql))
     {
        
@@ -431,14 +426,11 @@ case "deleteHD":
     break;
 
 case "getdataHD":
-    
     $mang=array();
-   
-    
-    $sql=mysqli_query($conn,"select * from hoadon"); 
+    $search=$_GET['search']; //Tìm kiếm dữ liệu
+    $sql=mysqli_query($conn,"select * from hoadon where (shd_hd like '%".$search."%' or makh_hd like '%".$search."%' or manv_hd like '%".$search."%') order by shd_hd"); 
     while($rows=mysqli_fetch_array($sql))
     {
-       
         $usertemp['shd_hd']=$rows['shd_hd'];
         $usertemp['makh_hd']=$rows['makh_hd'];
         $usertemp['manv_hd']=$rows['manv_hd'];
@@ -503,11 +495,9 @@ case "deleteDHH":
     break;
 
 case "getdataDDH":
-    
     $mang=array();
-   
-    
-    $sql=mysqli_query($conn,"select * from dondathang"); 
+    $search=$_GET['search']; //Tìm kiếm dữ liệu
+    $sql=mysqli_query($conn,"select ddh.*, nv.*, kh.* from dondathang ddh, nhanvien nv, khachhang kh where ddh.makh_dh = kh.makh_kh and ddh.manv_dh = nv.manv_nv and ( sodh_dh like '%".$search."%' or kh.tenkh_kh like '%".$search."%' or nv.tennv_nv like '%".$search."%' or ngaydh_dh like '%".$search."%' or trangthai_dh like '%".$search."%') order by sodh_dh"); 
     while($rows=mysqli_fetch_array($sql))
     {
        
@@ -518,6 +508,11 @@ case "getdataDDH":
         $usertemp['trangthai_dh']=$rows['trangthai_dh'];
         $usertemp['ngaydukien_dh']=$rows['ngaydukien_dh'];
         $usertemp['ngaythucte_dh']=$rows['ngaythucte_dh'];
+        $usertemp['manv_nv']=$rows['manv_nv'];
+        $usertemp['tennv_nv']=$rows['tennv_nv'];
+        $usertemp['makh_kh']=$rows['makh_kh'];
+        $usertemp['tenkh_kh']=$rows['tenkh_kh'];
+
         array_push($mang,$usertemp);
     }
     $jsonData['items'] =$mang;
@@ -577,9 +572,9 @@ case "deleteCTHD":
 case "getdataCTHD":
     
     $mang=array();
-   
+    $search=$_GET['search']; //Tìm kiếm dữ liệu
     
-    $sql=mysqli_query($conn,"select * from chitiethoadon ORDER BY sohd_cthd ASC"); 
+    $sql=mysqli_query($conn,"select * from chitiethoadon where (sohd_cthd like '%".$search."%' or masp_cthd like '%".$search."%') ORDER BY sohd_cthd ASC"); 
     while($rows=mysqli_fetch_array($sql))
     {
        
@@ -645,11 +640,10 @@ case "deleteCTDDH":
     break;
 
 case "getdataCTDDH":
-    
     $mang=array();
-   
+	$search=$_GET['search']; //Tìm kiếm dữ liệu
     
-    $sql=mysqli_query($conn,"select ctdh.*, gg.mgg_gg, gg.tengg_gg, ddh.sodh_dh, sp.matl_sp, sp.tentl_sp,  sp.dg_sp from chitietdathang ctdh , giamgia gg, sanpham sp, dondathang ddh where ctdh.mgg_ctdh = gg.mgg_gg and ctdh.sodh_ctdh = ddh.sodh_dh and ctdh.masp_ctdh = sp.matl_sp "); 
+    $sql=mysqli_query($conn,"select ctdh.*, gg.mgg_gg, gg.tengg_gg, ddh.sodh_dh, sp.matl_sp, sp.tentl_sp,  sp.dg_sp from chitietdathang ctdh , giamgia gg, sanpham sp, dondathang ddh where ctdh.mgg_ctdh = gg.mgg_gg and ctdh.sodh_ctdh = ddh.sodh_dh and ctdh.masp_ctdh = sp.matl_sp and (ctdh.sodh_ctdh like '%".$search."%' or ctdh.masp_ctdh like '%".$search."%' or ctdh.mgg_ctdh like '%".$search."%') ORDER BY sodh_ctdh"); 
     while($rows=mysqli_fetch_array($sql))
     {
        
@@ -716,9 +710,9 @@ case "deleteGG":
 case "getdataGG":
     
     $mang=array();
-   
+	$search=$_GET['search']; //Tìm kiếm dữ liệu
     
-    $sql=mysqli_query($conn,"select * from giamgia ORDER BY mgg_gg ASC"); 
+    $sql=mysqli_query($conn,"select * from giamgia where (mgg_gg like '%".$search."%' or tengg_gg like '%".$search."%') ORDER BY mgg_gg ASC"); 
     while($rows=mysqli_fetch_array($sql))
     {
        
@@ -731,20 +725,13 @@ case "getdataGG":
     echo json_encode($jsonData);
     mysqli_close($conn);
      break;	
-default:
-break;
 
 //viết php thống kê
 case "getdataTK_CTDDH":
-     $record=$_GET['record']; //số dòng sẽ lấy về từ server
-        $page=$_GET['page']; //số số trang mà client
-		$search=$_GET['search']; //Tìm kiếm dữ liệu
-		$vt=$page*$record;  //page=1,record=2
-        $limit='limit '.$vt.' , '.$record;
     $mang=array();
-   
+	$search=$_GET['search']; //Tìm kiếm dữ liệu
     
-    $sql=mysqli_query($conn,"select ctdh.*, gg.gg_gg, sp.dg_sp from chitietdathang ctdh , giamgia gg, sanpham sp  where ctdh.mgg_ctdh = gg.mgg_gg and ctdh.masp_ctdh = sp.matl_sp ORDER BY sodh_ctdh ASC" .$limit); 
+    $sql=mysqli_query($conn,"select ctdh.*, gg.gg_gg, sp.dg_sp from chitietdathang ctdh , giamgia gg, sanpham sp where ctdh.mgg_ctdh = gg.mgg_gg and ctdh.masp_ctdh = sp.matl_sp and(ctdh.sodh_ctdh like '%".$search."%' or ctdh.masp_ctdh like '%".$search."%' or ctdh.masp_ctdh like '%".$search."%') ORDER BY ctdh.sodh_ctdh ASC "); 
     while($rows=mysqli_fetch_array($sql))
     {
        
@@ -757,19 +744,10 @@ case "getdataTK_CTDDH":
 
         array_push($mang,$usertemp);
     }
-    $rs=mysqli_query($conn,"select COUNT(*) as 'total' from chitietdathang ctdh , giamgia gg, sanpham sp  where ctdh.mgg_ctdh = gg.mgg_gg and ctdh.masp_ctdh = sp.matl_sp ORDER BY sodh_ctdh ASC");
-        $row=mysqli_fetch_array($rs);
-        $jsonData['total'] =(int)$row['total'];
-		$jsonData['totalpage'] =ceil($row['total']/$record);
-	    $jsonData['page'] =(int)$page;
     $jsonData['items'] =$mang;
     echo json_encode($jsonData);
     mysqli_close($conn);
      break;	
-# code...
-break;
-# code...
-break;
 //////////////////////LOGIN////////////////////////////
 case "login":
 	$mang=array();

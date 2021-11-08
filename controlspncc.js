@@ -85,10 +85,21 @@ $('.resetsp_ncc').on('click', function(){
     $(".masp_spncc").val("");
     $(".mancc_spncc").val("");
 })
+//viết nút find
+$('.btnfindspncc').click(function(){
+    showdataSPNCC();
+})
+$('.txtfindspncc').keypress(function(e){
+    if(e.which==13){
+        showdataSPNCC();
+    }
+})
 })
 //show data sản phẩm nhà cung cấp
 function showdataSPNCC(){
+    var find = $('.txtfindspncc').val();
     var dataclient={
+        search: find,
         event:"getdataSPNCC",
     } 
     queryDataGet("content.php",dataclient,function(res){
@@ -115,7 +126,9 @@ function showdataSPNCC(){
 }
 //Viết hàm show cb masp
 function showDataCBMaSP(){
+    var find = $('.txtfindspncc').val();
     var dataclient = {
+        search: find,
         event:"getdataSP",
     }
     queryDataGet("content.php",dataclient,function(res){
@@ -134,7 +147,9 @@ function showDataCBMaSP(){
 }
 //Viết hàm show cb mancc
 function showDataCBMaNCC(){
+    var find = $('.txtfindspncc').val();
     var dataclient = {
+        search: find,
         event:"getdataNCC",
     }
     queryDataGet("content.php",dataclient,function(res){

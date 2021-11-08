@@ -145,10 +145,20 @@ $(".btndeletefilesp").on('click',function(){
         }
     });
 });
+$('.btnfindsp').click(function(){
+    showdataSP();
+})
+$('.txtfindsp').keypress(function(e){
+    if(e.which==13){
+        showdataSP();
+    }
+})
 })
 //show data SP
 function showdataSP(){
+    var find = $('.txtfindsp').val();
     var dataclient={
+        search:find,
         event:"getdataSP",
     } 
     queryDataGet("content.php",dataclient,function(res){

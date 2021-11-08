@@ -23,30 +23,33 @@ $('.btn_thongke').on("click", function(){
     let solonhdat = $(".soluongdat_ctdh").val();
     let giatien = $(".giatien_tk_ctdh").val();   
     let giamgia = $(".gg_tk_ctdh").val();  
-    let tongtt =  solonhdat*giatien*(1-giamgia);
-    console.log(solonhdat);
-    console.log(giatien);
-    console.log(giamgia);
+    let tong =  solonhdat*giatien*(1-giamgia);  
+    var tongtt = tong.toFixed(0);   
     console.log(tongtt);
     $('.tong_thongke').val(tongtt);
+})
+$('.btnfindtk').click(function(){
+    showdataTK_CTDDH();
+})
+$('.txtfindtk').keypress(function(e){
+    if(e.which==13){
+        showdataTK_CTDDH();
+    }
 })
 })
 
 //show data ct đơn đặt hàng
-function showdataTK_CTDDH(page,record){
+function showdataTK_CTDDH(){
     var find=$('.txtfindtk').val();
     var dataclient={
-        event:"getdataTK_CTDDH",
-        page:page,
-		record:record,
 		search:find,
+        event:"getdataTK_CTDDH",
     } 
     queryDataGet("content.php",dataclient,function(res){
        console.log(res);
        var data=res.items; 
-       console.log(data);
+       var stt=1;
        var htmls='';
-       let stt=1;
        for(var x in data){    
         var list=data[x];
         htmls=htmls+'<tr data-sodh_ctdh="'+list.sodh_ctdh+'" data-masp_ctdh="'+list.masp_ctdh+'" data-soluongdat_ctdh="'+list.soluongdat_ctdh+'" data-giatien_ctdh="'+list.giatien_ctdh+'"  data-mgg_ctdh="'+list.mgg_ctdh+'" data-dg_sp="'+list.dg_sp+'" data-gg_gg="'+list.gg_gg+'">'+
@@ -65,6 +68,5 @@ function showdataTK_CTDDH(page,record){
        }
        console.log(htmls);
        $(".loaddataTK_CTDDH").html(htmls);
-       buildSlidePage($('.pagenumbertk'),5,res.page,res.totalpage);
    });
 }

@@ -110,10 +110,21 @@ $('.resetncc').on('click', function(){
     $(".email_ncc").val("");
     $(".dc_ncc").val("");
 })
+//nút find
+$('.btnfindncc').click(function(){
+    showdataNCC();
+})
+$('.txtfindncc').keypress(function(e){
+    if(e.which==13){
+        showdataNCC();
+    }
+})
 })
 //show data nhà cung cấp
 function showdataNCC(){
+    var find = $('.txtfindncc').val();
     var dataclient={
+        search : find,
         event:"getdataNCC",
     } 
     queryDataGet("content.php",dataclient,function(res){
