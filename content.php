@@ -370,7 +370,7 @@ case "getdataSPNCC":
     
     $mang=array();
     
-    $sql=mysqli_query($conn,"select * from sanpham_nhacungcap"); 
+    $sql=mysqli_query($conn,"SELECT * from sanpham_nhacungcap ORDER BY mancc_spncc asc"); 
     while($rows=mysqli_fetch_array($sql))
     {
        
@@ -649,23 +649,27 @@ case "getdataCTDDH":
     $mang=array();
    
     
-    $sql=mysqli_query($conn,"select * from chitietdathang ORDER BY sodh_ctdh ASC"); 
+    $sql=mysqli_query($conn,"select ctdh.*, gg.mgg_gg, gg.tengg_gg, ddh.sodh_dh, sp.matl_sp, sp.tentl_sp,  sp.dg_sp from chitietdathang ctdh , giamgia gg, sanpham sp, dondathang ddh where ctdh.mgg_ctdh = gg.mgg_gg and ctdh.sodh_ctdh = ddh.sodh_dh and ctdh.masp_ctdh = sp.matl_sp "); 
     while($rows=mysqli_fetch_array($sql))
     {
        
         $usertemp['sodh_ctdh']=$rows['sodh_ctdh'];
         $usertemp['masp_ctdh']=$rows['masp_ctdh'];
         $usertemp['soluongdat_ctdh']=$rows['soluongdat_ctdh'];
-        $usertemp['giatien_ctdh']=$rows['giatien_ctdh'];  
-        $usertemp['mgg_ctdh']=$rows['mgg_ctdh'];  
+        $usertemp['mgg_ctdh']=$rows['mgg_ctdh']; 
+        $usertemp['mgg_gg']=$rows['mgg_gg']; 
+        $usertemp['sodh_dh']=$rows['sodh_dh']; 
+        $usertemp['matl_sp']=$rows['matl_sp']; 
+        $usertemp['dg_sp']=$rows['dg_sp']; 
+        $usertemp['tengg_gg']=$rows['tengg_gg']; 
+        $usertemp['tentl_sp']=$rows['tentl_sp']; 
+
         array_push($mang,$usertemp);
     }
     $jsonData['items'] =$mang;
     echo json_encode($jsonData);
     mysqli_close($conn);
      break;	
-# code...
-break;
 //viết php giảm giá
 case "insertGG":
     $mgg_gg=$_GET['mgg_gg'];
@@ -730,6 +734,42 @@ case "getdataGG":
 default:
 break;
 
+//viết php thống kê
+case "getdataTK_CTDDH":
+     $record=$_GET['record']; //số dòng sẽ lấy về từ server
+        $page=$_GET['page']; //số số trang mà client
+		$search=$_GET['search']; //Tìm kiếm dữ liệu
+		$vt=$page*$record;  //page=1,record=2
+        $limit='limit '.$vt.' , '.$record;
+    $mang=array();
+   
+    
+    $sql=mysqli_query($conn,"select ctdh.*, gg.gg_gg, sp.dg_sp from chitietdathang ctdh , giamgia gg, sanpham sp  where ctdh.mgg_ctdh = gg.mgg_gg and ctdh.masp_ctdh = sp.matl_sp ORDER BY sodh_ctdh ASC" .$limit); 
+    while($rows=mysqli_fetch_array($sql))
+    {
+       
+        $usertemp['sodh_ctdh']=$rows['sodh_ctdh'];
+        $usertemp['masp_ctdh']=$rows['masp_ctdh'];
+        $usertemp['soluongdat_ctdh']=$rows['soluongdat_ctdh'];
+        $usertemp['dg_sp']=$rows['dg_sp']; 
+        $usertemp['mgg_ctdh']=$rows['mgg_ctdh']; 
+        $usertemp['gg_gg']=$rows['gg_gg']; 
+
+        array_push($mang,$usertemp);
+    }
+    $rs=mysqli_query($conn,"select COUNT(*) as 'total' from chitietdathang ctdh , giamgia gg, sanpham sp  where ctdh.mgg_ctdh = gg.mgg_gg and ctdh.masp_ctdh = sp.matl_sp ORDER BY sodh_ctdh ASC");
+        $row=mysqli_fetch_array($rs);
+        $jsonData['total'] =(int)$row['total'];
+		$jsonData['totalpage'] =ceil($row['total']/$record);
+	    $jsonData['page'] =(int)$page;
+    $jsonData['items'] =$mang;
+    echo json_encode($jsonData);
+    mysqli_close($conn);
+     break;	
+# code...
+break;
+# code...
+break;
 //////////////////////LOGIN////////////////////////////
 case "login":
 	$mang=array();
@@ -789,17 +829,6 @@ case "login":
             mysqli_close($conn);
             break;
 
-// //////////////////check
-//     case "checkpermission":
-//         $username=$_GET['username'];
-//         $rs=mysqli_query($conn,"select 'permission' from login where username='".$username."' ");
-//         if((int)$row['permission']){
-//             $res["success"]=1;
-//         }else{
-//             $res["success"]=0;
-//         }
-//         echo json_encode($res);
-//             mysqli_close($conn);
-//             break;
+
 }
 ?>

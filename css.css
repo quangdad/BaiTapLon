@@ -54,3 +54,6 @@
     left: 50;
     z-index: 1;
 }
+button.btn_thongke{
+    margin-top: 32px;
+}

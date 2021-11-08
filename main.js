@@ -10,54 +10,98 @@ function swapMain(main){
     $(".formcthoadon").addClass("is-hidden");
     $(".formctdondathang").addClass("is-hidden");
     $(".formgiamgia").addClass("is-hidden");
+    $(".formthongke").addClass("is-hidden");
+
 // 
 	$("."+main).removeClass("is-hidden");
 }
 $(document).ready(function(){
     swapMain("formsanpham");//mặc địch khi load trang chủ lên
     $(".menusanpham").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Sản phẩm</li>')
+        let menusanpham2=$('.nav-treeview .menusanpham').text();
+        let menusanpham=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menusanpham2);
+        $(".titlestatus").text(menusanpham);
         swapMain("formsanpham");
         
     });
     $(".menukhachhang").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Khách hàng</li>');
+        let menukhachhang2=$('.nav-treeview .menukhachhang').text();
+        let menukhachhang=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menukhachhang2);
+        $(".titlestatus").text(menukhachhang);
         swapMain("formkhachhang");
        
     });
     $(".menunhanvien").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Nhân viên</li>');
+        let menunhanvien2=$('.nav-treeview .menunhanvien').text();
+        let menunhanvien=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menunhanvien2);
+        $(".titlestatus").text(menunhanvien);
         swapMain("formnhanvien");
     });
     $(".menunhacungcap").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Nhà cung cấp</li>');
+        let menunhacungcap2=$('.nav-treeview .menunhacungcap').text();
+        let menunhacungcap=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menunhacungcap2);
+        $(".titlestatus").text(menunhacungcap);
         swapMain("formnhacungcap");
     });
     $(".menusp-ncc").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Sản phẩm_Nhà cung cấp</li>');
+        let menusp_ncc2=$('.nav-treeview .menusp-ncc').text();
+        let menusp_ncc=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menusp_ncc2);
+        $(".titlestatus").text(menusp_ncc);
         swapMain("formsp-ncc");
         showDataCBMaSP();
         showDataCBMaNCC();
     });
     $(".menuhoadon").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Hóa đơn</li>');
+        let menuhoadon2=$('.nav-treeview .menuhoadon').text();
+        let menuhoadon=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menuhoadon2);
+        $(".titlestatus").text(menuhoadon);
         swapMain("formhoadon");
     });
     $(".menudondathang").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Đơn đặt hàng</li>');
+        let menudondathang2=$('.nav-treeview .menudondathang').text();
+        let menudondathang=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menudondathang2);
+        $(".titlestatus").text(menudondathang);
         swapMain("formdondathang");
     });
     $(".menucthoadon").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Chi tiết hóa đơn</li>');
+        let menucthoadon2=$('.nav-treeview .menucthoadon').text();
+        let menucthoadon=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menucthoadon2);
+        $(".titlestatus").text(menucthoadon);
         swapMain("formcthoadon");
     });
     $(".menuctdondathang").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Chi tiết đặt hàng</li>');
+        let menuctdondathang2=$('.nav-treeview .menuctdondathang').text();
+        let menuctdondathang=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menuctdondathang2);
+        $(".titlestatus").text(menuctdondathang);
         swapMain("formctdondathang");
+        showDataCBMagg();
+        showDataCBGiaTien();
+        showDataCBDDH();
+        showDataCBMSP();
     });
     $(".menugiamgia").on("click", function(){
-        $(".titlestatus").html('<li class="breadcrumb-item"><a href="#">Danh mục</a></li><li class="breadcrumb-item active titlestatus">Giam giá</li>');
+        let menugiamgia2=$('.nav-treeview .menugiamgia').text();
+        let menugiamgia=$('.listmenu_open').parent().text();
+        $(".titlestatus2").text("/"+menugiamgia2);
+        $(".titlestatus").text(menugiamgia);
         swapMain("formgiamgia");
+    });
+    $(".menuthongke").on("click", function(){
+        let menuthongke2=$('.nav-treeview .menuthongke').text();
+        let menuthongke=$('.listmenu_thongke').parent().text();
+        $(".titlestatus2").text("/"+menuthongke2);
+        $(".titlestatus").text(menuthongke);
+        $("h1.m-0").text("Thống kê");
+        swapMain("formthongke");
     });
     showdataSP();
     showdataKH();
@@ -69,6 +113,7 @@ $(document).ready(function(){
     showdataCTHD();
     showdataCTDDH();
     showdataGG();
+    showdataTK_CTDDH();
     buildUserDropdown();
     permission1();
 //logout
@@ -221,12 +266,14 @@ function buildUserDropdown(){
 
 function permission1(){
         var permission = localStorage.getItem("permissionbookstore")
-    console.log(permission);
         if(permission==1){
             $(".permission1").prop("disabled",true);
-            alert('Bạn đang đăng nhập ở quyền nhân viên')
-        }else{
-            alert('Bạn đang đăng nhập ở quyền cao nhất')
+            console.log('Bạn đang đăng nhập ở quyền nhân viên');
+        }else if(permission==0){
+            console.log('Bạn đang đăng nhập ở quyền cao nhất');
+        }
+        else{
+            console.log('Đăng nhập bất hợp pháp');
         }
     }
     
@@ -247,29 +294,36 @@ function alert_success(mes,callback) {
         callback: callback
     });
 }
+function notext(){
+    $('.notext').prop("disabled", true);
+}
 
+function buildSlidePage(obj,codan,pageActive,totalPage) {
+    var html="";
+    pageActive=parseInt(pageActive);
+    for(i = 1 ; i <=codan; i++) {
+        if(pageActive-i<0) break;
+        html='<button type="button" class="btn btn-outline btn-default" value="'+(pageActive-i)+'">'+(pageActive-i+1)+'</button>'+html;
+    }
+    if(pageActive>codan){
+        html='<button type="button" class="btn btn-outline btn-default" value="'+(pageActive-i)+'">...</button>'+html;
+    }
+    html+='<button type="button" class="btn btn-outline btn-default" style="background-color: #5cb85c" value="'+pageActive+'">'+(pageActive+1)+'</button>';
+    for(i = 1 ; i <=codan; i++){
+        if(pageActive+i>=totalPage) break;
+        html=html+'<button  type="button" class="btn btn-outline btn-default" value="'+(pageActive+i)+'">'+(pageActive+i+1)+'</button>';
+    }
+    if(totalPage-pageActive>codan+1){
+        html=html+'<button type="button" value="'+(pageActive+i)+'" class="btn btn-outline btn-default">...</button>';
+    }
+    obj.html(html);
+}
+function printSTT(record,pageCurr){
+    if ((pageCurr+1)==1) {
+        return 1;
+    }else{
+        return record*(pageCurr+1)-(record-1);
+    }
+}
 
-var arr = $('.nav-link p').toArray();
-
-console.log(arr)
-var listArr = [];
-arr.forEach( (e,i) => {
-    listArr.push(e.innerText);
-});
-
-listArr.forEach((e,i) => {
-    $(e).parent().click(function(){
-        console.log(e)
-    })
-    console.log($(e).parents())
-})
-
-var listNav_item = $('.nav-treeview .nav-item').toArray();
-console.log(listArr)
-console.log(listNav_item)
-listNav_item.forEach((e,i)=>{
-    $(e).click(function(){
-        $('.titlestatus').text("Danh muc/"+e.innerText)
-    })
-})
 

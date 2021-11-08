@@ -100,8 +100,8 @@ function showdataSPNCC(){
         var list=data[x];
         htmls=htmls+'<tr data-masp_spncc="'+list.masp_spncc+'" data-mancc_spncc="'+list.mancc_spncc+'">'+
         '<td>'+stt+'</td>'+
-        "<td>"+list.masp_spncc+"</td>"+
         "<td >"+list.mancc_spncc+"</td>"+
+        "<td>"+list.masp_spncc+"</td>"+
         '<td class="click_view_SPNCC"><span class="btn btn-success">Xem</span></td>'+
         '</tr>';
                 
@@ -132,6 +132,7 @@ function showDataCBMaSP(){
         }
     })
 }
+//Viết hàm show cb mancc
 function showDataCBMaNCC(){
     var dataclient = {
         event:"getdataNCC",

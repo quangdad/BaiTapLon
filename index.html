@@ -88,18 +88,18 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link">
+          <li class="nav-item menu-open ">
+            <a href="#" class="nav-link ">
              
               <i class="far fa-circle nav-icon"></i>
-              <p>
+              <p class="listmenu_open">
                 Danh mục
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-left "></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item menusanpham">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link ">
                   <p>Sản phẩm</p>
                 </a>
               </li>
@@ -151,22 +151,17 @@
             </ul>
           </li>
          
-          <li class="nav-item">
+          <li class="nav-item menu-open">
             <a href="#" class="nav-link">
               <i class="far fa-circle nav-icon"></i>
-              <p>
+              <p class="listmenu_thongke">
                 Nghiệp vụ bán hàng
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <p>Xem đơn hàng</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
+                <a href="#" class="nav-link menuthongke">
                   <p>Thống kê</p>
                 </a>
               </li>
@@ -192,8 +187,9 @@
             <h1 class="m-0">Quản trị</h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right titlestatus2">
+            </ol>
             <ol class="breadcrumb float-sm-right titlestatus">
-              
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -414,7 +410,7 @@
                 </div>
               </div><!-- /.card-body -->
               <div>
-                <table class="table table-bordered table-hover">
+                <table class="table table-bordered table-hover ">
                   <thead>
                     <tr>
                       <th>#</th>
@@ -553,8 +549,8 @@
                   <thead>
                     <tr>
                       <th>#</th>
-                      <th> Mã SP</th>
                       <th>Mã NCC</th>
+                      <th> Mã SP</th>
                       <th>Thao tác</th>
                     </tr>
                   </thead>
@@ -812,7 +808,7 @@
               <div class="card-header bg-danger">
                 <h3 class="card-title">
                   <i class="fas fa-chart-pie mr-1"></i>
-                  Thông tin về chi tiết đơn đặt hàng
+                  Thông tin về chi tiết đơn hàng
                 </h3>
                
               </div><!-- /.card-header -->
@@ -824,13 +820,15 @@
                         <div class="col-sm-6">
                           <div class="form-group">
                           <label for="exampleInputEmail1">Số đặt hàng </label>
-                          <input type="text" class="form-control sodh_ctdh"  placeholder="Input">
+                          <select type="text" class="form-control sodh_ctdh"  >
+                            </select>
                          </div>
                         </div>
                         <div class="col-sm-6">
                         <div class="form-group">
                           <label for="exampleInputPassword1">Mã sản phẩm</label>
-                         <input type="text" class="form-control masp_ctdh"  placeholder="Input">
+                         <select type="text" class="form-control masp_ctdh" >
+                           </select>
                       </div>    
                       </div>
                      </div>
@@ -840,11 +838,13 @@
                       </div>   
                       <div class="form-group">
                         <label for="exampleInputPassword1">Giá tiền</label>
-                        <input type="text" class="form-control giatien_ctdh"  placeholder="Input">
+                        <select type="text" class="form-control giatien_ctdh" >
+                          </select>
                       </div>            
                       <div class="form-group">
                         <label for="exampleInputPassword1">Mã giảm giá </label>
-                        <input type="text" class="form-control mgg_ctdh"  placeholder="Input">
+                        <select type="text" class="form-control mgg_ctdh" >
+                          </select>
                       </div>   
                     </div>
                     <!-- /.card-body -->
@@ -940,6 +940,104 @@
           </section>
         </div>
         <!--Kết thúc giảm giá-->
+
+        <!--thống kê -->
+        <div class="row formthongke is-hidden" >
+          <!-- Left col -->
+          <section class="col-lg-12 ">
+            <!-- Custom tabs (Charts with tabs)-->
+            <div class="card">
+              <div class="card-header bg-danger">
+                <h3 class="card-title">
+                  <i class="fas fa-chart-pie mr-1"></i>
+                  Thống kê về chi tiết đơn hàng
+                </h3>
+               
+              </div><!-- /.card-header -->
+              <div class="card-body">
+                <div class="tab-content p-0">
+                  <form>
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-6">
+                          <div class="form-group">
+                          <label for="exampleInputEmail1">Số đặt hàng </label>
+                          <input type="text" class="form-control sodh_ctdh notext"  >
+                         </div>
+                        </div>
+                        <div class="col-sm-6">
+                        <div class="form-group">
+                          <label for="exampleInputPassword1">Mã sản phẩm</label>
+                         <input type="text" class="form-control masp_ctdh notext" >
+                      </div>    
+                      </div>
+                     </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Số lượng đặt</label>
+                        <input type="text" class="form-control soluongdat_ctdh notext"  >
+                      </div>   
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Giá tiền</label>
+                        <input type="text" class="form-control giatien_tk_ctdh notext"  >
+                      </div>            
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Mã giảm giá </label>
+                        <input type="text" class="form-control mgg_ctdh notext"  >
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Giảm giá</label>
+                        <input type="text" class="form-control gg_tk_ctdh notext"  >
+                      </div>    
+                    </div>
+                    <!-- /.card-body -->
+    
+                    <div class="card-footer row">
+                      <div class="col-sm-6"></div>
+                      <div class="form-group col-sm-4">
+                        <label for="exampleInputPassword1">Tổng thành tiền </label>
+                        <input type="text" class="form-control tong_thongke"  placeholder="Thành tiền"> 
+                      </div>  
+                      <div class="col-sm-2">
+                        <button type="button" class="btn btn-primary btn_thongke">Tổng</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div><!-- /.card-body -->
+              <div class="card-header row">
+                <div class="input-group input-group-sm col-sm-3">
+                      <input type="text" class="form-control txtfindtk" placeholder='Tìm kiếm'>
+                      <span class="input-group-append">
+                        <button type="button" class="btn btn-info btn-flat btnfindtk"><i class="fas fa-search"></i></button>
+                      </span>
+                    </div>
+                    <div class="col-sm-9"></div>
+            </div>
+              <div>
+                <table class="table table-bordered table-hover">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Số đặt hàng</th>
+                      <th>Mã sản phẩm</th>
+                      <th>Số lượng đặt</th>
+                      <th>Giá tiền</th>
+                      <th>Mã giảm giá </th>
+                      <th>Giảm giá</th>
+                      <th>Thao tác</th>
+                    </tr>
+                  </thead>
+                  <tbody class="loaddataTK_CTDDH"> 
+                  </tbody>
+                </table>
+              </div>
+              <div class="pagenumbertk">
+              </div>
+            </div>
+         
+          </section>
+        </div>
+        <!--Kết thúc chi tiết đơn đặt hàng-->
       </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
@@ -1090,6 +1188,7 @@
 <script src="controldathang.js"></script>
 <script src="controlCThoadon.js"></script>
 <script src="controlCTdathang.js"></script>
+<script src="controlthongke.js"></script>
 <script src="js/bootbox.min.js"></script>
 <script src="spuploadimagestatus/canvas-to-blob.min.js"></script>
 <script src="spuploadimagestatus/resize.js"></script>
